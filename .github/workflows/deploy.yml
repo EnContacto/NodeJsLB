@@ -13,7 +13,7 @@ env:
 
 jobs:
   deploy-qa:
-    uses: ./.github/workflows/build_and_deploy_with_setup
+    uses: ./.github/workflows/build_and_deploy_with_setup.yml
     with:
       env: qa
       tag: latest
@@ -24,7 +24,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy-main:
-    uses: ./.github/workflows/build_and_deploy_with_setup
+    uses: ./.github/workflows/build_and_deploy_with_setup.yml
     with:
       env: production
       tag: latest
