@@ -13,17 +13,24 @@ env:
 
 jobs:
   deploy-qa:
-    uses: ./.github/workflows/build_deploy.yml
+    uses: ./.github/workflows/build_and_deploy_with_setup.yml
     with:
       env: qa
       tag: latest
       ec2_hosts: ${{ secrets.EC2_HOSTS_QA }}
       ec2_key: ${{ secrets.EC2_KEY_QA }}
+    secrets: # Aquí se pasan los secretos
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   deploy-main:
-    uses: ./.github/workflows/build_deploy.yml
+    uses: ./.github/workflows/build_and_deploy_with_setup.yml
     with:
       env: production
       tag: latest
       ec2_hosts: ${{ secrets.EC2_HOSTS_PRD }}
       ec2_key: ${{ secrets.EC2_KEY_PRD }}
+    secrets: # Aquí también
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
