@@ -13,7 +13,7 @@ env:
 
 jobs:
   deploy-qa:
-    uses: ./.github/workflows/build_and_deploy_with_setup.yml
+    uses: ./.github/workflows/build_deploy.yml
     with:
       env: qa
       tag: latest
@@ -21,7 +21,7 @@ jobs:
       ec2_key: ${{ secrets.EC2_KEY_QA }}
 
   deploy-main:
-    uses: ./.github/workflows/build_and_deploy_with_setup.yml
+    uses: ./.github/workflows/build_deploy.yml
     with:
       env: production
       tag: latest
